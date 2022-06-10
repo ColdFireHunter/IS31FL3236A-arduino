@@ -29,7 +29,8 @@ bool IS32FL3236A::isConnected()
     _error = _wire->endTransmission();
     return (_error == 0);
 }
-void IS32FL3236A::blank(bool on){
+void IS32FL3236A::blank(bool on)
+{
     if (on == 0)
     {
         writeReg(0x4A, 0x01);
@@ -80,10 +81,11 @@ void IS32FL3236A::setLedParam(uint8_t lednum, uint8_t current, bool enabled)
 
     writeReg(hexlednum, hexparam);
 }
-void IS32FL3236A::clear(){
+void IS32FL3236A::clear()
+{
     for (int i = 0x01; i < 0x24; i++)
     {
-        writeReg(i,0x00);
+        writeReg(i, 0x00);
     }
 }
 void IS32FL3236A::update()
@@ -92,10 +94,16 @@ void IS32FL3236A::update()
 }
 void IS32FL3236A::setFrequency(bool high)
 {
-    writeReg(0x48,high);
+    writeReg(0x48, high);
 }
-void IS32FL3236A::reset(){
-    writeReg(0x4F,0x00);
+void IS32FL3236A::reset()
+{
+    writeReg(0x4F, 0x00);
+}
+uint8_t IS32FL3236A::gamma64(uint8_t input)
+{
+    uint8_t output = gamma64_table[input];
+    return output;
 }
 
 uint8_t IS32FL3236A::writeReg(uint8_t reg, uint8_t value)

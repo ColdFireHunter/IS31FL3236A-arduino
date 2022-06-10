@@ -24,6 +24,7 @@ class IS32FL3236A{
         void update();
         void setFrequency(bool high);
         void reset();
+        uint8_t gamma64(uint8_t input);
 
 
     private:
@@ -33,6 +34,7 @@ class IS32FL3236A{
         int      _error;
         TwoWire* _wire;
         uint8_t writeReg(uint8_t reg, uint8_t value);
+        uint8_t gamma64_table[64] = {0,1,2,3,4,5,6,7,8,10,12,14,16,18,20,22,24,26,29,32,35,38,41,44,47,50,53,57,61,65,69,73,77,81,85,89,94,99,104,109,114,119,124,129,134,140,146,152,158,164,170,176,182,188,195,202,209,216,223,230,237,244,251,255};
 };
 
 #endif
