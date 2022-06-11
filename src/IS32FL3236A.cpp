@@ -83,7 +83,7 @@ void IS32FL3236A::setLedParam(uint8_t lednum, uint8_t current, bool enabled)
 }
 void IS32FL3236A::clear()
 {
-    for (int i = 0x01; i < 0x24; i++)
+    for (int i = 0x01; i <= 0x24; i++)
     {
         writeReg(i, 0x00);
     }
