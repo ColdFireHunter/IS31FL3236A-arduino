@@ -9,7 +9,6 @@ IS32FL3236A::IS32FL3236A(uint8_t deviceAdress, uint8_t sdb_pin, TwoWire *wire)
 
 bool IS32FL3236A::begin()
 {
-    _wire = &Wire;
     _wire->begin();
     pinMode(_sdbpin, OUTPUT);
     digitalWrite(_sdbpin, LOW);
